@@ -15,7 +15,6 @@ export default function Home() {
   useEffect(() => {
     const filtered = tiktokEmojis.filter(emoji => 
       emoji.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      emoji.meaning.toLowerCase().includes(searchTerm.toLowerCase()) ||
       emoji.shortcode.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredEmojis(filtered);
