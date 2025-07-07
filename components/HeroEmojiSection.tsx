@@ -1,10 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Copy, Search, Heart } from 'lucide-react';
 import { EmojiCard } from '@/components/EmojiCard';
 import { SearchBar } from '@/components/SearchBar';
 import { TikTokEmoji } from '@/lib/tiktokEmojis';
+import JSZip from 'jszip';
+import { saveAs } from 'file-saver';
 
 interface HeroEmojiSectionProps {
   emojis: TikTokEmoji[];
@@ -13,6 +15,41 @@ interface HeroEmojiSectionProps {
 }
 
 export function HeroEmojiSection({ emojis, searchTerm, setSearchTerm }: HeroEmojiSectionProps) {
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+
+  const handleSelect = (id: string, checked: boolean) => {
+    setSelectedIds(prev => checked ? [...prev, id] : prev.filter(i => i !== id));
+  };
+
+  const handleDownloadAll = async () => {
+    const zip = new JSZip();
+    const folder = zip.folder('tiktok-emojis');
+    for (const emoji of emojis) {
+      if (emoji.imagePath) {
+        const response = await fetch(emoji.imagePath);
+        const blob = await response.blob();
+        folder?.file(emoji.imagePath.split('/').pop() || 'emoji.png', blob);
+      }
+    }
+    const content = await zip.generateAsync({ type: 'blob' });
+    saveAs(content, 'tiktok-emojis.zip');
+  };
+
+  const handleDownloadSelected = async () => {
+    const zip = new JSZip();
+    const folder = zip.folder('tiktok-emojis-selected');
+    const selectedEmojis = emojis.filter(e => selectedIds.includes(e.id));
+    for (const emoji of selectedEmojis) {
+      if (emoji.imagePath) {
+        const response = await fetch(emoji.imagePath);
+        const blob = await response.blob();
+        folder?.file(emoji.imagePath.split('/').pop() || 'emoji.png', blob);
+      }
+    }
+    const content = await zip.generateAsync({ type: 'blob' });
+    saveAs(content, 'selected-tiktok-emojis.zip');
+  };
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-pink-50 via-white to-cyan-50 py-20">
       <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-cyan-400/10"></div>
@@ -36,7 +73,7 @@ export function HeroEmojiSection({ emojis, searchTerm, setSearchTerm }: HeroEmoj
         <div id="emojis" className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              {emojis.length} TikTok Hidden Emojis Collection
+              {emojis.length} TikTok Emojis Collection
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Click any emoji to copy it instantly. These exclusive emojis are only available on TikTok and can make your content stand out.
@@ -52,10 +89,34 @@ export function HeroEmojiSection({ emojis, searchTerm, setSearchTerm }: HeroEmoj
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
               {emojis.map((emoji) => (
-                <EmojiCard key={emoji.id} emoji={emoji} />
+                <div className="relative">
+                  <input
+                    type="checkbox"
+                    className="absolute left-2 top-2 z-10 w-4 h-4 accent-blue-600"
+                    checked={selectedIds.includes(emoji.id)}
+                    onChange={e => handleSelect(emoji.id, e.target.checked)}
+                    aria-label={`Select ${emoji.name}`}
+                  />
+                  <EmojiCard key={emoji.id} emoji={emoji} />
+                </div>
               ))}
             </div>
           )}
+          <div className="flex justify-center gap-4 mt-12">
+            <button
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+              onClick={handleDownloadAll}
+            >
+              Download All
+            </button>
+            <button
+              className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition disabled:bg-gray-300 disabled:text-gray-500"
+              onClick={handleDownloadSelected}
+              disabled={selectedIds.length === 0}
+            >
+              Download Selected
+            </button>
+          </div>
         </div>
       </div>
     </section>
