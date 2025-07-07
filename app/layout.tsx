@@ -1,8 +1,9 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Fredoka } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
+const fredoka = Fredoka({ subsets: ['latin'], weight: ['400', '500', '700'], variable: '--font-fredoka' });
 
 export const metadata: Metadata = {
   title: 'TikTok Emojis Hub - 46 Hidden Emojis | Copy & Paste TikTok Emojis',
@@ -84,7 +85,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className + ' ' + fredoka.variable}>{children}</body>
     </html>
   );
 }

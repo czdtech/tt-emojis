@@ -30,6 +30,9 @@ export function Header() {
             <a href="/#guide" className="text-gray-700 hover:text-pink-500 transition-colors">
               Guide
             </a>
+            <a href="/#faq" className="text-gray-700 hover:text-pink-500 transition-colors">
+              FAQ
+            </a>
             <a href="/about" className="text-gray-700 hover:text-pink-500 transition-colors">
               About
             </a>
@@ -64,6 +67,9 @@ export function Header() {
               </a>
               <a href="/#guide" className="text-gray-700 hover:text-pink-500 transition-colors">
                 Guide
+              </a>  
+              <a href="/#faq" className="text-gray-700 hover:text-pink-500 transition-colors">
+                FAQ
               </a>
               <a href="/about" className="text-gray-700 hover:text-pink-500 transition-colors">
                 About

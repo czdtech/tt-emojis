@@ -133,66 +133,66 @@ export function HeroEmojiSection({ emojis, searchTerm, setSearchTerm }: HeroEmoj
 // FAQ Section 组件
 export function FAQSection() {
   return (
-    <section className="max-w-7xl mx-auto mt-16 mb-8 bg-white/80 rounded-2xl shadow">
+    <section className="max-w-7xl mx-auto mt-16 mb-8" id="faq">
       <h2 className="text-4xl font-bold mb-8 text-center text-gray-900">Frequently Asked Questions about tiktok emojis</h2>
       <Accordion type="single" collapsible className="divide-y divide-gray-100">
         <AccordionItem value="q1">
-          <AccordionTrigger className="font-fredoka">1. What are TikTok Emojis?</AccordionTrigger>
-          <AccordionContent className="font-fredoka">
+          <AccordionTrigger className="font-fredoka pl-4 pr-4">1. What are TikTok Emojis?</AccordionTrigger>
+          <AccordionContent className="font-fredoka pl-4 pr-4 text-md">
             TikTok emojis are a set of hidden, exclusive emojis that can only be displayed on the TikTok platform. You can't type them with a regular keyboard—they require special codes or tools to use.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="q2">
-          <AccordionTrigger className="font-fredoka">2. How do I use tiktok emojis on TikTok?</AccordionTrigger>
-          <AccordionContent className="font-fredoka">
+          <AccordionTrigger className="font-fredoka pl-4 pr-4">2. How do I use tiktok emojis on TikTok?</AccordionTrigger>
+          <AccordionContent className="font-fredoka pl-4 pr-4">
             Copy your favorite tiktok emojis shortcode (like <code className='bg-gray-100 px-2 py-1 rounded'>[smile]</code>) and paste it into your TikTok comment, message, or video description. After posting, the tiktok emojis will appear automatically.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="q3">
-          <AccordionTrigger className="font-fredoka">3. Why can't I see tiktok emojis on other platforms?</AccordionTrigger>
-          <AccordionContent className="font-fredoka">
+          <AccordionTrigger className="font-fredoka pl-4 pr-4">3. Why can't I see tiktok emojis on other platforms?</AccordionTrigger>
+          <AccordionContent className="font-fredoka pl-4 pr-4">
             Tiktok emojis are exclusive to the TikTok app and website. Other platforms will only show the shortcode or a blank box instead of the emoji.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="q4">
-          <AccordionTrigger className="font-fredoka">4. Why are some tiktok emojis not showing up on my TikTok?</AccordionTrigger>
-          <AccordionContent className="font-fredoka">
+          <AccordionTrigger className="font-fredoka pl-4 pr-4">4. Why are some tiktok emojis not showing up on my TikTok?</AccordionTrigger>
+          <AccordionContent className="font-fredoka pl-4 pr-4">
             This may be due to an outdated TikTok app, regional restrictions, or network issues. Please update your app and check your internet connection.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="q5">
-          <AccordionTrigger className="font-fredoka">5. Can I use tiktok emojis on Instagram, Facebook, Twitter, or Snapchat?</AccordionTrigger>
-          <AccordionContent className="font-fredoka">
+          <AccordionTrigger className="font-fredoka pl-4 pr-4">5. Can I use tiktok emojis on Instagram, Facebook, Twitter, or Snapchat?</AccordionTrigger>
+          <AccordionContent className="font-fredoka pl-4 pr-4">
             No, tiktok emojis are only supported on the TikTok platform. Other platforms cannot recognize the special tiktok emojis shortcode. However, you can save tiktok emojis images and send them to users on other platforms as pictures.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="q6">
-          <AccordionTrigger className="font-fredoka">6. How can I copy or download all tiktok emojis at once?</AccordionTrigger>
-          <AccordionContent className="font-fredoka">
+          <AccordionTrigger className="font-fredoka pl-4 pr-4">6. How can I copy or download all tiktok emojis at once?</AccordionTrigger>
+          <AccordionContent className="font-fredoka pl-4 pr-4">
             Our homepage offers one-click copy and batch download features, making it easy to get all tiktok emojis images and codes quickly.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="q7">
-          <AccordionTrigger className="font-fredoka">7. Are tiktok emojis free for commercial use?</AccordionTrigger>
-          <AccordionContent className="font-fredoka">
+          <AccordionTrigger className="font-fredoka pl-4 pr-4">7. Are tiktok emojis free for commercial use?</AccordionTrigger>
+          <AccordionContent className="font-fredoka pl-4 pr-4">
             Tiktok emojis are for personal entertainment and content creation only. Commercial use or redistribution is not allowed.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="q8">
-          <AccordionTrigger className="font-fredoka">8. Why does the tiktok emojis shortcode show as text after I paste it?</AccordionTrigger>
-          <AccordionContent className="font-fredoka">
+          <AccordionTrigger className="font-fredoka pl-4 pr-4">8. Why does the tiktok emojis shortcode show as text after I paste it?</AccordionTrigger>
+          <AccordionContent className="font-fredoka pl-4 pr-4">
             The shortcode will only turn into a tiktok emoji after you post it on TikTok. On other platforms, it will remain as text.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="q9">
-          <AccordionTrigger className="font-fredoka">9. Does this site collect my personal information?</AccordionTrigger>
-          <AccordionContent className="font-fredoka">
+          <AccordionTrigger className="font-fredoka pl-4 pr-4">9. Does this site collect my personal information?</AccordionTrigger>
+          <AccordionContent className="font-fredoka pl-4 pr-4">
             No, we do not collect any personal information. All tiktok emojis usage statistics are stored locally in your browser. See our Privacy Policy for details.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="q10">
-          <AccordionTrigger className="font-fredoka">10. How can I give feedback or report an issue?</AccordionTrigger>
-          <AccordionContent className="font-fredoka">
+          <AccordionTrigger className="font-fredoka pl-4 pr-4">10. How can I give feedback or report an issue?</AccordionTrigger>
+          <AccordionContent className="font-fredoka pl-4 pr-4">
             You can contact us via the Contact Us page or email support@tiktokemojishub.com. We welcome all suggestions to improve your tiktok emojis experience!
           </AccordionContent>
         </AccordionItem>
