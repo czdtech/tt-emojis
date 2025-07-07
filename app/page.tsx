@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Header } from '@/components/Header';
-import { HeroEmojiSection } from '@/components/HeroEmojiSection';
+import { HeroEmojiSection, FAQSection } from '@/components/HeroEmojiSection';
 import { GuideSection } from '@/components/GuideSection';
 import { Footer } from '@/components/Footer';
 import { tiktokEmojis } from '@/lib/tiktokEmojis';
@@ -33,6 +33,7 @@ export default function Home() {
         />
         
         <GuideSection />
+        <FAQSection />
       </main>
 
       <Footer />
