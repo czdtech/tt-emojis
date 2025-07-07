@@ -66,7 +66,7 @@ export function HeroEmojiSection({ emojis, searchTerm, setSearchTerm }: HeroEmoj
         <div className="text-center max-w-4xl mx-auto mb-16">
 
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-pink-500 to-cyan-400 bg-clip-text text-transparent font-fredoka">
+            <span className="bg-gradient-to-r from-pink-500 to-cyan-400 bg-clip-text text-transparent">
               TikTok Emojis
             </span>
           </h1>
