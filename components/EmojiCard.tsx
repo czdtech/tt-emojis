@@ -18,6 +18,15 @@ export function EmojiCard({ emoji }: EmojiCardProps) {
   const [copied, setCopied] = useState(false);
   const router = useRouter();
 
+  function updateEmojiStat(id: string, type: 'copy' | 'view') {
+    if (typeof window === 'undefined') return;
+    const key = 'tiktokEmojiStats';
+    const stats = JSON.parse(localStorage.getItem(key) || '{}');
+    if (!stats[id]) stats[id] = { copy: 0, view: 0 };
+    stats[id][type] += 1;
+    localStorage.setItem(key, JSON.stringify(stats));
+  }
+
   const copyToClipboard = async (e: React.MouseEvent) => {
     e.stopPropagation();
     try {
@@ -28,6 +37,7 @@ export function EmojiCard({ emoji }: EmojiCardProps) {
         description: `${emoji.shortcode} copied to clipboard`,
       });
       setTimeout(() => setCopied(false), 2000);
+      updateEmojiStat(emoji.id, 'copy');
     } catch (err) {
       toast({
         title: "Copy failed",
@@ -39,6 +49,7 @@ export function EmojiCard({ emoji }: EmojiCardProps) {
 
   const viewDetails = (e: React.MouseEvent) => {
     e.stopPropagation();
+    updateEmojiStat(emoji.id, 'view');
     router.push(`/emoji/${emoji.id}`);
   };
 

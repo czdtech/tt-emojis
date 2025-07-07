@@ -16,22 +16,32 @@ export function Header() {
               <Heart className="w-5 h-5 text-white" />
             </div>
             <span className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-cyan-400 bg-clip-text text-transparent">
-              TikTok Emojis Hub
+              TikTok Emojis
             </span>
           </div>
 
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#emojis" className="text-gray-700 hover:text-pink-500 transition-colors">
+          <a href="/" className="text-gray-700 hover:text-pink-500 transition-colors">
+              Home
+            </a>
+            <a href="/#emojis" className="text-gray-700 hover:text-pink-500 transition-colors">
               Emojis
             </a>
-            <a href="#guide" className="text-gray-700 hover:text-pink-500 transition-colors">
+            <a href="/#guide" className="text-gray-700 hover:text-pink-500 transition-colors">
               Guide
             </a>
-            <a href="#about" className="text-gray-700 hover:text-pink-500 transition-colors">
+            <a href="/about" className="text-gray-700 hover:text-pink-500 transition-colors">
               About
             </a>
-            <Button className="bg-gradient-to-r from-pink-500 to-cyan-400 text-white hover:from-pink-600 hover:to-cyan-500">
-              Get Started
+            <Button
+              className="bg-gradient-to-r from-pink-500 to-cyan-400 text-white hover:from-pink-600 hover:to-cyan-500"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.dispatchEvent(new CustomEvent('download-all'));
+                }
+              }}
+            >
+              Download
             </Button>
           </nav>
 
@@ -46,17 +56,27 @@ export function Header() {
         {isMenuOpen && (
           <div className="md:hidden mt-4 pb-4 border-t border-gray-200">
             <nav className="flex flex-col space-y-4 pt-4">
-              <a href="#emojis" className="text-gray-700 hover:text-pink-500 transition-colors">
+            <a href="/" className="text-gray-700 hover:text-pink-500 transition-colors">
+                Home
+              </a>
+              <a href="/#emojis" className="text-gray-700 hover:text-pink-500 transition-colors">
                 Emojis
               </a>
-              <a href="#guide" className="text-gray-700 hover:text-pink-500 transition-colors">
+              <a href="/#guide" className="text-gray-700 hover:text-pink-500 transition-colors">
                 Guide
               </a>
-              <a href="#about" className="text-gray-700 hover:text-pink-500 transition-colors">
+              <a href="/about" className="text-gray-700 hover:text-pink-500 transition-colors">
                 About
               </a>
-              <Button className="bg-gradient-to-r from-pink-500 to-cyan-400 text-white hover:from-pink-600 hover:to-cyan-500 w-full">
-                Get Started
+              <Button
+                className="bg-gradient-to-r from-pink-500 to-cyan-400 text-white hover:from-pink-600 hover:to-cyan-500 w-full"
+                onClick={() => {
+                  if (typeof window !== 'undefined') {
+                    window.dispatchEvent(new CustomEvent('download-all'));
+                  }
+                }}
+              >
+                Download
               </Button>
             </nav>
           </div>

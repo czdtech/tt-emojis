@@ -25,7 +25,7 @@ export function GuideSection() {
             <CardTitle className="text-lg">Step 1: Copy Emoji</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-gray-600">Click any emoji above to copy it to your clipboard instantly.</p>
+            <p className="text-gray-600">Click any tiktok emoji above to copy it to your clipboard instantly.</p>
           </CardContent>
         </Card>
 
@@ -77,7 +77,7 @@ export function GuideSection() {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Badge variant="outline" className="text-pink-600 border-pink-600">Engagement</Badge>
-              <p className="text-gray-600">Use emojis strategically in your captions to increase engagement and make your content more discoverable.</p>
+              <p className="text-gray-600">Use tiktok emojis strategically in your captions to increase engagement and make your content more discoverable.</p>
             </div>
             <div className="space-y-2">
               <Badge variant="outline" className="text-cyan-600 border-cyan-600">Trending</Badge>
@@ -85,7 +85,7 @@ export function GuideSection() {
             </div>
             <div className="space-y-2">
               <Badge variant="outline" className="text-purple-600 border-purple-600">Creativity</Badge>
-              <p className="text-gray-600">Mix hidden emojis with regular ones to create unique emoji combinations that express your personality.</p>
+              <p className="text-gray-600">Mix hidden tiktok emojis with regular ones to create unique emoji combinations that express your personality.</p>
             </div>
           </CardContent>
         </Card>
@@ -100,15 +100,15 @@ export function GuideSection() {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Badge variant="outline" className="text-green-600 border-green-600">Moderation</Badge>
-              <p className="text-gray-600">Don't overuse emojis - 3-5 per caption is usually optimal for readability and impact.</p>
+              <p className="text-gray-600">Don't overuse tiktok emojis - 3-5 per caption is usually optimal for readability and impact.</p>
             </div>
             <div className="space-y-2">
               <Badge variant="outline" className="text-blue-600 border-blue-600">Relevance</Badge>
-              <p className="text-gray-600">Choose emojis that match your content's mood and message to enhance rather than distract.</p>
+              <p className="text-gray-600">Choose tiktok emojis that match your content's mood and message to enhance rather than distract.</p>
             </div>
             <div className="space-y-2">
               <Badge variant="outline" className="text-orange-600 border-orange-600">Testing</Badge>
-              <p className="text-gray-600">Test different emoji combinations to see which ones resonate best with your audience.</p>
+              <p className="text-gray-600">Test different tiktok emoji combinations to see which ones resonate best with your audience.</p>
             </div>
           </CardContent>
         </Card>

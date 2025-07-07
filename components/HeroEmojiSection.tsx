@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Copy, Search, Heart } from 'lucide-react';
 import { EmojiCard } from '@/components/EmojiCard';
 import { SearchBar } from '@/components/SearchBar';
@@ -50,6 +50,12 @@ export function HeroEmojiSection({ emojis, searchTerm, setSearchTerm }: HeroEmoj
     saveAs(content, 'selected-tiktok-emojis.zip');
   };
 
+  useEffect(() => {
+    const handler = () => handleDownloadAll();
+    window.addEventListener('download-all', handler);
+    return () => window.removeEventListener('download-all', handler);
+  }, [emojis]);
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-pink-50 via-white to-cyan-50 py-20">
       <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-cyan-400/10"></div>
@@ -76,15 +82,15 @@ export function HeroEmojiSection({ emojis, searchTerm, setSearchTerm }: HeroEmoj
               {emojis.length} TikTok Emojis Collection
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Click any emoji to copy it instantly. These exclusive emojis are only available on TikTok and can make your content stand out.
+              Discover and copy all exclusive tiktok emojis. These tiktok emojis are only available on TikTok and can make your content stand out. Use tiktok emojis to make your TikTok content unique!
             </p>
           </div>
 
           {emojis.length === 0 ? (
             <div className="text-center py-16">
               <div className="text-6xl mb-4">🔍</div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">未找到表情符号</h3>
-              <p className="text-gray-600">尝试调整搜索词或浏览所有表情符号。</p>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-2">No tiktok emojis found</h3>
+              <p className="text-gray-600">Try adjusting your search or browse all tiktok emojis.</p>
             </div>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">

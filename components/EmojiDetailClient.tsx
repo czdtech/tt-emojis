@@ -42,10 +42,20 @@ function mulberry32(a: number) {
   }
 }
 
+function updateEmojiStat(id: string, type: 'copy' | 'view') {
+  if (typeof window === 'undefined') return;
+  const key = 'tiktokEmojiStats';
+  const stats = JSON.parse(localStorage.getItem(key) || '{}');
+  if (!stats[id]) stats[id] = { copy: 0, view: 0 };
+  stats[id][type] += 1;
+  localStorage.setItem(key, JSON.stringify(stats));
+}
+
 export function EmojiDetailClient({ emoji }: EmojiDetailClientProps) {
   const router = useRouter();
   const [copied, setCopied] = useState(false);
   const [relatedEmojis, setRelatedEmojis] = useState<TikTokEmoji[]>([]);
+  const [popularEmojis, setPopularEmojis] = useState<TikTokEmoji[]>([]);
 
   useEffect(() => {
     // 每12小时一个周期
@@ -59,6 +69,17 @@ export function EmojiDetailClient({ emoji }: EmojiDetailClientProps) {
     setRelatedEmojis(related);
   }, [emoji]);
 
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const key = 'tiktokEmojiStats';
+    const stats = JSON.parse(localStorage.getItem(key) || '{}');
+    const sorted = [...tiktokEmojis]
+      .map(e => ({ ...e, _copy: stats[e.id]?.copy || 0 }))
+      .sort((a, b) => b._copy - a._copy)
+      .slice(0, 8);
+    setPopularEmojis(sorted.filter(e => e._copy > 0));
+  }, []);
+
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(emoji.shortcode);
@@ -67,6 +88,7 @@ export function EmojiDetailClient({ emoji }: EmojiDetailClientProps) {
         title: "Copied!",
         description: `${emoji.shortcode} copied to clipboard`,
       });
+      updateEmojiStat(emoji.id, 'copy');
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       toast({
@@ -228,29 +250,28 @@ export function EmojiDetailClient({ emoji }: EmojiDetailClientProps) {
 
           {/* Sidebar */}
           <div className="space-y-6">
-            {/* Quick Actions */}
+            {/* Most Popular Emojis */}
             <Card>
               <CardHeader>
-                <CardTitle className="text-xl">Quick Actions</CardTitle>
+                <CardTitle className="text-xl">Most Popular Emojis</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-3">
-                <Button
-                  variant="outline"
-                  className="w-full justify-start"
-                  onClick={copyToClipboard}
-                >
-                  <Copy className="w-4 h-4 mr-2" />
-                  Copy to Clipboard
-                </Button>
-                
-                <Button
-                  variant="outline"
-                  className="w-full justify-start"
-                  onClick={() => window.open('https://www.tiktok.com', '_blank')}
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  Open TikTok
-                </Button>
+              <CardContent>
+                {popularEmojis.length > 0 ? (
+                  <ul className="divide-y divide-gray-100">
+                    {popularEmojis.map(e => (
+                      <li key={e.id} className="flex items-center gap-4 py-3 cursor-pointer hover:bg-pink-50 rounded transition" onClick={() => router.push(`/emoji/${e.id}`)}>
+                        <img src={e.imagePath} alt={e.name} className="w-10 h-10 rounded object-contain bg-white border" />
+                        <div className="flex-1 min-w-0">
+                          <div className="font-semibold text-gray-900 truncate">{e.name}</div>
+                          <div className="text-xs text-gray-500 truncate">{e.shortMeaning}</div>
+                        </div>
+                        <span className="text-xs text-pink-600 font-bold ml-2">×{typeof (e as any)._copy === 'number' ? (e as any)._copy : 0}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div className="text-center text-gray-400 text-sm py-4">No popular emojis yet</div>
+                )}
               </CardContent>
             </Card>
 
