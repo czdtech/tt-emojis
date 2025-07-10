@@ -15,7 +15,7 @@ export function Footer() {
               <span className="text-xl font-bold">TikTok Emojis</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Your ultimate destination for tiktok emojis. Copy, paste, and create amazing content with exclusive tiktok emojis. Discover the world of tiktok emojis and enhance your TikTok experience.
+              Your ultimate destination for tiktok emojis. Copy, paste, and create amazing content with hidden tiktok emojis. Discover the world of tiktok emojis and enhance your TikTok experience.
             </p>
           </div>
 

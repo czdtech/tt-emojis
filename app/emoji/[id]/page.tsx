@@ -23,11 +23,11 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   const imageUrl = `https://tiktokemojishub.com${emoji.imagePath}`;
 
   return {
-    title: `${emoji.name} ${emoji.unicode} - TikTok Hidden Emoji | Copy & Paste`,
+    title: `${emoji.name} ${emoji.shortcode} - TikTok Hidden Emoji | Copy & Paste`,
     description: `${emoji.meaning} Copy and paste ${emoji.name} emoji for your TikTok content. ${emoji.usage}`,
     keywords: `${emoji.name}, tiktok emoji, ${emoji.shortcode}, emoji copy paste, tiktok hidden emoji`,
     openGraph: {
-      title: `${emoji.name} ${emoji.unicode} - TikTok Hidden Emoji | Copy & Paste`,
+      title: `${emoji.name} ${emoji.shortcode} - TikTok Hidden Emoji | Copy & Paste`,
       description: `${emoji.meaning} Copy and paste ${emoji.name} emoji for your TikTok content.`,
       url,
       siteName: 'TikTok Emojis Hub',
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
     },
     twitter: {
       card: 'summary',
-      title: `${emoji.name} ${emoji.unicode} - TikTok Hidden Emoji | Copy & Paste`,
+      title: `${emoji.name} ${emoji.shortcode} - TikTok Hidden Emoji | Copy & Paste`,
       description: `${emoji.meaning}`,
       images: [imageUrl],
     },

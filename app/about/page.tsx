@@ -7,7 +7,7 @@ export default function AboutPage() {
       <Header />
       <main className="flex-1 container mx-auto px-4 py-16 max-w-2xl">
         <h1 className="text-4xl font-bold mb-6 text-center text-pink-600">About Us</h1>
-        <p className="text-lg text-gray-700 mb-6 text-center">
+        <p className="text-lg text-gray-700 mb-6 text-left">
           TikTok Emojis Hub is a community-driven project dedicated to collecting, explaining, and sharing all 46 hidden TikTok emojis. Our mission is to help creators and fans easily discover, copy, and use these unique emojis to make their content stand out.
         </p>
         <div className="mb-8">

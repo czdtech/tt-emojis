@@ -6,9 +6,9 @@ const inter = Inter({ subsets: ['latin'] });
 const fredoka = Fredoka({ subsets: ['latin'], weight: ['400', '500', '700'], variable: '--font-fredoka' });
 
 export const metadata: Metadata = {
-  title: 'TikTok Emojis Hub - 46 Hidden Emojis | Copy & Paste TikTok Emojis',
+  title: 'TikTok Emojis - 46 Hidden TikTok Emojis | Copy & Paste TikTok Emojis',
   description: 'Discover all 46 exclusive TikTok hidden emojis. Copy and paste unique emojis for your TikTok content. The ultimate resource for TikTok creators and enthusiasts.',
-  keywords: 'tiktok emojis, tiktok hidden emojis, tiktok emoji meaning, tiktok emoji copy paste, hidden emojis tiktok, tiktok exclusive emojis',
+  keywords: 'tiktok emojis, tiktok hidden emojis, tiktok emoji meaning, tiktok emoji copy paste',
   authors: [{ name: 'TikTok Emojis Hub' }],
   creator: 'TikTok Emojis Hub',
   publisher: 'TikTok Emojis Hub',
@@ -22,16 +22,16 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'TikTok Emojis Hub - 46 Hidden Emojis | Copy & Paste TikTok Emojis',
+    title: 'TikTok Emojis - 46 Hidden TikTok Emojis | Copy & Paste TikTok Emojis',
     description: 'Discover all 46 exclusive TikTok hidden emojis. Copy and paste unique emojis for your TikTok content. The ultimate resource for TikTok creators and enthusiasts.',
     url: 'https://tiktokemojishub.com',
     siteName: 'TikTok Emojis Hub',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/emojis/tiktok-emoji-list.png',
         width: 1200,
         height: 630,
-        alt: 'TikTok Emojis Hub - Hidden Emojis Collection',
+        alt: 'TikTok Emojis  - Hidden Emojis Collection',
       },
     ],
     locale: 'en_US',
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TikTok Emojis Hub - 46 Hidden Emojis | Copy & Paste TikTok Emojis',
+    title: 'TikTok Emojis - 46 Hidden TikTok Emojis | Copy & Paste TikTok Emojis',
     description: 'Discover all 46 exclusive TikTok hidden emojis. Copy and paste unique emojis for your TikTok content.',
-    images: ['/og-image.jpg'],
+    images: ['/emojis/tiktok-emoji-list.png'],
   },
   robots: {
     index: true,
@@ -73,7 +73,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "TikTok Emojis Hub",
+              "name": "TikTok Emojis",
               "url": "https://tiktokemojishub.com",
               "description": "Discover all 46 exclusive TikTok hidden emojis. Copy and paste unique emojis for your TikTok content.",
               "potentialAction": {

@@ -7,7 +7,7 @@ export default function ContactPage() {
       <Header />
       <main className="flex-1 container mx-auto px-4 py-16 max-w-2xl">
         <h1 className="text-4xl font-bold mb-6 text-center text-pink-600">Contact Us</h1>
-        <p className="text-lg text-gray-700 mb-6 text-center">
+        <p className="text-lg text-gray-700 mb-6 text-left">
           We value your feedback and are here to help! If you have any questions, suggestions, or want to report an issue, please reach out to us.
         </p>
         <div className="mb-8">

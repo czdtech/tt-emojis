@@ -83,7 +83,7 @@ export function HeroEmojiSection({ emojis, searchTerm, setSearchTerm }: HeroEmoj
               {emojis.length} TikTok Emojis Collection
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover and copy all exclusive tiktok emojis. These tiktok emojis are only available on TikTok and can make your content stand out. Use tiktok emojis to make your TikTok content unique!
+              Discover and copy all hidden tiktok emojis. These tiktok emojis are only available on TikTok and can make your content stand out. Use tiktok emojis to make your TikTok content unique!
             </p>
           </div>
 
