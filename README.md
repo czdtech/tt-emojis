@@ -22,6 +22,9 @@ Create a `.env.local` file in the root directory and add the following variables
 # Website Domain (required for SEO and link generation)
 NEXT_PUBLIC_SITE_URL=https://tiktokemojihub.org
 
+# Support Email (required for contact and legal pages)
+NEXT_PUBLIC_SUPPORT_EMAIL=support@tiktokemojihub.org
+
 # Google Site Verification (required for Google Search Console)
 NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=your-google-site-verification-code
 
