@@ -259,7 +259,7 @@ export function EmojiDetailClient({ emoji }: EmojiDetailClientProps) {
                 {popularEmojis.length > 0 ? (
                   <ul className="divide-y divide-gray-100">
                     {popularEmojis.map(e => (
-                      <li key={e.id} className="flex items-center gap-4 py-3 cursor-pointer hover:bg-pink-50 rounded transition" onClick={() => router.push(`/emoji/${e.id}`)}>
+                      <li key={e.id} className="flex items-center gap-4 py-3 cursor-pointer hover:bg-pink-50 rounded transition" onClick={() => router.push(`/emoji/${e.urlSlug}`)}>
                         <img src={e.imagePath} alt={e.name} className="w-10 h-10 rounded object-contain bg-white border" />
                         <div className="flex-1 min-w-0">
                           <div className="font-semibold text-gray-900 truncate">{e.name}</div>
@@ -310,7 +310,7 @@ export function EmojiDetailClient({ emoji }: EmojiDetailClientProps) {
                 </CardHeader>
                 <CardContent className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-4 justify-items-center items-center">
                   {relatedEmojis.map((e) => (
-                    <div key={e.id} className="flex flex-col items-center cursor-pointer" onClick={() => router.push(`/emoji/${e.id}`)}>
+                    <div key={e.id} className="flex flex-col items-center cursor-pointer" onClick={() => router.push(`/emoji/${e.urlSlug}`)}>
                       <div className="relative w-10 h-10 mb-1">
                         <Image
                           src={e.imagePath}

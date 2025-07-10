@@ -50,7 +50,7 @@ export function EmojiCard({ emoji }: EmojiCardProps) {
   const viewDetails = (e: React.MouseEvent) => {
     e.stopPropagation();
     updateEmojiStat(emoji.id, 'view');
-    router.push(`/emoji/${emoji.id}`);
+    router.push(`/emoji/${emoji.urlSlug}`);
   };
 
   return (

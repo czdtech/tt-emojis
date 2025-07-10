@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+Crawl-delay: 1
+
+Sitemap: https://tiktokemojishub.com/sitemap.xml
+
+Allow: /emoji/
+Allow: /about
+Allow: /contact
+Allow: /privacy-policy
+Allow: /terms-of-service
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: / 

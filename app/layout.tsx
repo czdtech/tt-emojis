@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] });
 const fredoka = Fredoka({ subsets: ['latin'], weight: ['400', '500', '700'], variable: '--font-fredoka' });
 
 export const metadata: Metadata = {
-  title: 'TikTok Emojis - 46 Hidden TikTok Emojis | Copy & Paste TikTok Emojis',
+  title: 'TikTok Emojis - 46 Hidden Emojis | Copy & Paste TikTok Emojis',
   description: 'Discover all 46 exclusive TikTok hidden emojis. Copy and paste unique emojis for your TikTok content. The ultimate resource for TikTok creators and enthusiasts.',
   keywords: 'tiktok emojis, tiktok hidden emojis, tiktok emoji meaning, tiktok emoji copy paste',
   authors: [{ name: 'TikTok Emojis Hub' }],

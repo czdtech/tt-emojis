@@ -96,7 +96,7 @@ export function HeroEmojiSection({ emojis, searchTerm, setSearchTerm }: HeroEmoj
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
               {emojis.map((emoji) => (
-                <div className="relative">
+                <div key={emoji.id} className="relative">
                   <input
                     type="checkbox"
                     className="absolute left-2 top-2 z-10 w-4 h-4 accent-blue-600"
@@ -104,7 +104,7 @@ export function HeroEmojiSection({ emojis, searchTerm, setSearchTerm }: HeroEmoj
                     onChange={e => handleSelect(emoji.id, e.target.checked)}
                     aria-label={`Select ${emoji.name}`}
                   />
-                  <EmojiCard key={emoji.id} emoji={emoji} />
+                  <EmojiCard emoji={emoji} />
                 </div>
               ))}
             </div>

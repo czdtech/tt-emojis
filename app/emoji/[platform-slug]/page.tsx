@@ -2,16 +2,16 @@ import { notFound } from 'next/navigation';
 import { tiktokEmojis } from '@/lib/tiktokEmojis';
 import { EmojiDetailClient } from '@/components/EmojiDetailClient';
 
-// Generate static params for all emoji IDs
+// 生成所有表情的静态参数
 export async function generateStaticParams() {
   return tiktokEmojis.map((emoji) => ({
-    id: emoji.id,
+    'platform-slug': emoji.urlSlug,
   }));
 }
 
-// Generate metadata for each emoji page
-export async function generateMetadata({ params }: { params: { id: string } }) {
-  const emoji = tiktokEmojis.find(e => e.id === params.id);
+// 为每个表情页面生成元数据
+export async function generateMetadata({ params }: { params: { 'platform-slug': string } }) {
+  const emoji = tiktokEmojis.find(e => e.urlSlug === params['platform-slug']);
   
   if (!emoji) {
     return {
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
     };
   }
 
-  const url = `https://tiktokemojishub.com/emoji/${emoji.id}`;
+  const url = `https://tiktokemojishub.com/emoji/${emoji.urlSlug}`;
   const imageUrl = `https://tiktokemojishub.com${emoji.imagePath}`;
 
   return {
@@ -51,12 +51,12 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   };
 }
 
-export default function EmojiDetailPage({ params }: { params: { id: string } }) {
-  const emoji = tiktokEmojis.find(e => e.id === params.id);
+export default function EmojiDetailPage({ params }: { params: { 'platform-slug': string } }) {
+  const emoji = tiktokEmojis.find(e => e.urlSlug === params['platform-slug']);
   
   if (!emoji) {
     notFound();
   }
 
   return <EmojiDetailClient emoji={emoji} />;
-}
+} 
