@@ -1,14 +1,21 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { Inter, Fredoka } from 'next/font/google';
+import type { Metadata } from 'next'
+import { Fredoka, Inter } from 'next/font/google'
+import Script from 'next/script'
+import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] });
-const fredoka = Fredoka({ subsets: ['latin'], weight: ['400', '500', '700'], variable: '--font-fredoka' });
+const inter = Inter({ subsets: ['latin'] })
+const fredoka = Fredoka({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  variable: '--font-fredoka',
+})
 
 export const metadata: Metadata = {
   title: 'TikTok Emojis - 46 Hidden Emojis | Copy & Paste TikTok Emojis',
-  description: 'Discover all 46 exclusive TikTok hidden emojis. Copy and paste unique emojis for your TikTok content. The ultimate resource for TikTok creators and enthusiasts.',
-  keywords: 'tiktok emojis, tiktok hidden emojis, tiktok emoji meaning, tiktok emoji copy paste',
+  description:
+    'Discover all 46 exclusive TikTok hidden emojis. Copy and paste unique emojis for your TikTok content. The ultimate resource for TikTok creators and enthusiasts.',
+  keywords:
+    'tiktok emojis, tiktok hidden emojis, tiktok emoji meaning, tiktok emoji copy paste',
   authors: [{ name: 'TikTok Emojis Hub' }],
   creator: 'TikTok Emojis Hub',
   publisher: 'TikTok Emojis Hub',
@@ -17,14 +24,18 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://tiktokemojishub.com'),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://tiktokemojihub.org'
+  ),
   alternates: {
-    canonical: '/',
+    canonical: process.env.NEXT_PUBLIC_SITE_URL || 'https://tiktokemojihub.org',
   },
   openGraph: {
-    title: 'TikTok Emojis - 46 Hidden TikTok Emojis | Copy & Paste TikTok Emojis',
-    description: 'Discover all 46 exclusive TikTok hidden emojis. Copy and paste unique emojis for your TikTok content. The ultimate resource for TikTok creators and enthusiasts.',
-    url: 'https://tiktokemojishub.com',
+    title:
+      'TikTok Emojis - 46 Hidden TikTok Emojis | Copy & Paste TikTok Emojis',
+    description:
+      'Discover all 46 exclusive TikTok hidden emojis. Copy and paste unique emojis for your TikTok content. The ultimate resource for TikTok creators and enthusiasts.',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://tiktokemojihub.org',
     siteName: 'TikTok Emojis Hub',
     images: [
       {
@@ -39,8 +50,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TikTok Emojis - 46 Hidden TikTok Emojis | Copy & Paste TikTok Emojis',
-    description: 'Discover all 46 exclusive TikTok hidden emojis. Copy and paste unique emojis for your TikTok content.',
+    title:
+      'TikTok Emojis - 46 Hidden TikTok Emojis | Copy & Paste TikTok Emojis',
+    description:
+      'Discover all 46 exclusive TikTok hidden emojis. Copy and paste unique emojis for your TikTok content.',
     images: ['/emojis/tiktok-emoji-list.png'],
   },
   robots: {
@@ -54,38 +67,72 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-};
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="canonical" href="https://tiktokemojishub.com" />
-        <meta name="google-site-verification" content="your-google-site-verification-code" />
+        <link
+          rel="canonical"
+          href={
+            process.env.NEXT_PUBLIC_SITE_URL || 'https://tiktokemojihub.org'
+          }
+        />
+        <meta
+          name="google-site-verification"
+          content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || ''}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": "TikTok Emojis",
-              "url": "https://tiktokemojishub.com",
-              "description": "Discover all 46 exclusive TikTok hidden emojis. Copy and paste unique emojis for your TikTok content.",
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://tiktokemojishub.com/?search={search_term_string}",
-                "query-input": "required name=search_term_string"
-              }
-            })
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'TikTok Emojis',
+              url:
+                process.env.NEXT_PUBLIC_SITE_URL ||
+                'https://tiktokemojihub.org',
+              description:
+                'Discover all 46 exclusive TikTok hidden emojis. Copy and paste unique emojis for your TikTok content.',
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: `${
+                  process.env.NEXT_PUBLIC_SITE_URL ||
+                  'https://tiktokemojihub.org'
+                }/?search={search_term_string}`,
+                'query-input': 'required name=search_term_string',
+              },
+            }),
           }}
         />
       </head>
-      <body className={inter.className + ' ' + fredoka.variable}>{children}</body>
+      <body className={inter.className + ' ' + fredoka.variable}>
+        {children}
+
+        {/* Google Analytics */}
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
+              `}
+            </Script>
+          </>
+        )}
+      </body>
     </html>
-  );
+  )
 }

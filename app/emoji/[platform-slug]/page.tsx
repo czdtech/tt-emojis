@@ -1,31 +1,43 @@
-import { notFound } from 'next/navigation';
-import { tiktokEmojis } from '@/lib/tiktokEmojis';
-import { EmojiDetailClient } from '@/components/EmojiDetailClient';
+import { EmojiDetailClient } from '@/components/EmojiDetailClient'
+import { tiktokEmojis } from '@/lib/tiktokEmojis'
+import { notFound } from 'next/navigation'
 
 // 生成所有表情的静态参数
 export async function generateStaticParams() {
-  return tiktokEmojis.map((emoji) => ({
+  return tiktokEmojis.map(emoji => ({
     'platform-slug': emoji.urlSlug,
-  }));
+  }))
 }
 
 // 为每个表情页面生成元数据
-export async function generateMetadata({ params }: { params: { 'platform-slug': string } }) {
-  const emoji = tiktokEmojis.find(e => e.urlSlug === params['platform-slug']);
-  
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ 'platform-slug': string }>
+}) {
+  const resolvedParams = await params
+  const emoji = tiktokEmojis.find(
+    e => e.urlSlug === resolvedParams['platform-slug']
+  )
+
   if (!emoji) {
     return {
       title: 'Emoji Not Found - TikTok Emojis Hub',
-    };
+    }
   }
 
-  const url = `https://tiktokemojishub.com/emoji/${emoji.urlSlug}`;
-  const imageUrl = `https://tiktokemojishub.com${emoji.imagePath}`;
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://tiktokemojihub.org'
+  const url = `${baseUrl}/emoji/${emoji.urlSlug}`
+  const imageUrl = `${baseUrl}${emoji.imagePath}`
 
   return {
     title: `${emoji.name} ${emoji.shortcode} - TikTok Hidden Emoji | Copy & Paste`,
     description: `${emoji.meaning} Copy and paste ${emoji.name} emoji for your TikTok content. ${emoji.usage}`,
     keywords: `${emoji.name}, tiktok emoji, ${emoji.shortcode}, emoji copy paste, tiktok hidden emoji`,
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
       title: `${emoji.name} ${emoji.shortcode} - TikTok Hidden Emoji | Copy & Paste`,
       description: `${emoji.meaning} Copy and paste ${emoji.name} emoji for your TikTok content.`,
@@ -48,15 +60,22 @@ export async function generateMetadata({ params }: { params: { 'platform-slug': 
       description: `${emoji.meaning}`,
       images: [imageUrl],
     },
-  };
+  }
 }
 
-export default function EmojiDetailPage({ params }: { params: { 'platform-slug': string } }) {
-  const emoji = tiktokEmojis.find(e => e.urlSlug === params['platform-slug']);
-  
+export default async function EmojiDetailPage({
+  params,
+}: {
+  params: Promise<{ 'platform-slug': string }>
+}) {
+  const resolvedParams = await params
+  const emoji = tiktokEmojis.find(
+    e => e.urlSlug === resolvedParams['platform-slug']
+  )
+
   if (!emoji) {
-    notFound();
+    notFound()
   }
 
-  return <EmojiDetailClient emoji={emoji} />;
-} 
+  return <EmojiDetailClient emoji={emoji} />
+}
