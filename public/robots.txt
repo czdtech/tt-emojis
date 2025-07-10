@@ -1,7 +1,6 @@
 User-agent: *
 Allow: /
 
-Crawl-delay: 1
 
 Sitemap: https://tiktokemojishub.com/sitemap.xml
 
@@ -11,11 +10,5 @@ Allow: /contact
 Allow: /privacy-policy
 Allow: /terms-of-service
 
-User-agent: Googlebot
+User-agent: *
 Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Slurp
-Allow: / 
