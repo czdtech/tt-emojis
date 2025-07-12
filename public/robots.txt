@@ -3,12 +3,3 @@ Allow: /
 
 
 Sitemap: https://tiktokemojihub.org/sitemap.xml
-
-Allow: /emoji/
-Allow: /about
-Allow: /contact
-Allow: /privacy-policy
-Allow: /terms-of-service
-
-User-agent: *
-Allow: /
